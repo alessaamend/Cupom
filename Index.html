@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Seu Cupom de Desconto</title>
+  <style>
+    body {
+
+  background-image: url("background.jpg");
+  background-size: cover; /* Para cobrir toda a tela */
+  background-repeat: no-repeat; /* Evita repetição da imagem */
+  background-attachment: fixed; /* Para fixar o fundo */ { font-family: sans-serif; text-align: center; padding: 50px; }}
+
+    .cupom { font-size: 24px; background: #f2f2f2; display: inline-block; padding: 10px 20px; border-radius: 8px; }
+    button { margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+
+  </style>
+</head>
+<body>
+
+
+  <button onclick="copiarERedirecionar()">Copiar Cupom e Ir para a Loja</button>
+
+  <script>
+    function copiarERedirecionar() {
+      const cupom = document.getElementById("cupom").innerText;
+      navigator.clipboard.writeText(cupom).then(() => {
+        // ? Redireciona após copiar
+        window.location.href = "https://www.amend.com.br/promocoes.html";
+      });
+    }
+  </script>
+
+</body>
+</html>
