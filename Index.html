@@ -5,27 +5,68 @@
   <title>Seu Cupom de Desconto</title>
   <style>
     body {
+      background-image: url("background.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: sans-serif;
+      text-align: center;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-  background-image: url("background.jpg");
-  background-size: cover; /* Para cobrir toda a tela */
-  background-repeat: no-repeat; /* Evita repetição da imagem */
-  background-attachment: fixed; /* Para fixar o fundo */ { font-family: sans-serif; text-align: center; padding: 50px; }}
+    .caixa-cupom {
+      background-image: url("imagemcupom.jpg");
+      background-size: cover;
+      background-position: center;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
 
-    .cupom { font-size: 24px; background: #f2f2f2; display: inline-block; padding: 10px 20px; border-radius: 8px; }
-    button { margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    .cupom {
+      font-size: 24px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
 
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background-color: #f7941d;
+      color: white;
+    }
+
+    button:hover {
+      background-color: #e07c00;
+    }
   </style>
 </head>
 <body>
 
-
-  <button onclick="copiarERedirecionar()">Copiar Cupom e Ir para a Loja</button>
+  <div class="caixa-cupom">
+    <div class="cupom" id="cupom">MEUCUPOM10</div>
+    <button onclick="copiarERedirecionar()">Copiar Cupom e Ir para a Loja</button>
+  </div>
 
   <script>
     function copiarERedirecionar() {
       const cupom = document.getElementById("cupom").innerText;
       navigator.clipboard.writeText(cupom).then(() => {
-        // ? Redireciona após copiar
         window.location.href = "https://www.amend.com.br/promocoes.html";
       });
     }
@@ -33,3 +74,4 @@
 
 </body>
 </html>
+
