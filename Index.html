@@ -22,14 +22,10 @@
       background-size: cover;
       background-position: center;
       width: 300px;
-      height: 350px;
+      height: 300px;
       position: relative;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .cupom {
-      display: none; /* Oculta visualmente */
     }
 
     button {
@@ -49,25 +45,42 @@
     button:hover {
       background-color: #e07c00;
     }
+
+    /* Campo do cupom escondido */
+    #cupom {
+      position: absolute;
+      left: -9999px;
+    }
   </style>
 </head>
 <body>
 
   <div class="caixa-cupom">
-    <div class="cupom" id="cupom">MEUCUPOM10</div>
+    <input type="text" value="MEUCUPOM10" id="cupom" readonly />
     <button onclick="copiarERedirecionar()">Copiar Cupom e Ir para a Loja</button>
   </div>
 
   <script>
     function copiarERedirecionar() {
-      const cupom = document.getElementById("cupom").innerText;
-      navigator.clipboard.writeText(cupom).then(() => {
-        window.location.href = "https://www.amend.com.br/promocoes.html";
-      });
+      const input = document.getElementById("cupom");
+      input.select();
+      input.setSelectionRange(0, 99999); // Compatível com mobile
+
+      try {
+        const sucesso = document.execCommand("copy");
+        if (sucesso) {
+          alert("Cupom copiado! Você será redirecionado.");
+        } else {
+          alert("Não foi possível copiar. Copie manualmente: " + input.value);
+        }
+      } catch (err) {
+        alert("Erro ao copiar. Copie manualmente: " + input.value);
+      }
+
+      // Redireciona mesmo se a cópia falhar
+      window.location.href = "https://www.amend.com.br/promocoes.html";
     }
   </script>
 
 </body>
 </html>
-
-
