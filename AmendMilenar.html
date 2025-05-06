@@ -29,7 +29,7 @@
     }
 
     .cupom {
-      display: none; /* Oculta visualmente */
+      display: none;
     }
 
     button {
@@ -37,8 +37,9 @@
       bottom: 75px;
       left: 50%;
       transform: translateX(-50%);
-      padding: 10px 20px;
+      padding: 12px 30px;
       font-size: 28px;
+      white-space: nowrap;
       cursor: pointer;
       border: none;
       border-radius: 6px;
@@ -49,24 +50,48 @@
     button:hover {
       background-color: #e07c00;
     }
+
+    .mensagem {
+      position: absolute;
+      bottom: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: none;
+      max-width: 90%;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
 
   <div class="caixa-cupom">
     <div class="cupom" id="cupom">IDB_ALESSAMARQUES</div>
+    <div class="mensagem" id="mensagem"></div> <!-- Corrigido: mensagem agora está presente -->
     <button onclick="copiarERedirecionar()">Copiar Cupom e Ir para a Loja</button>
   </div>
 
   <script>
     function copiarERedirecionar() {
       const cupom = document.getElementById("cupom").innerText;
+      const mensagem = document.getElementById("mensagem");
+
       navigator.clipboard.writeText(cupom).then(() => {
-        window.location.href = "https://www.amend.com.br/kit-amend-millenar-oleos-gregos-%7C-4-produtos/p/kit-665.html";
+        mensagem.innerText = "Cupom Copiado! Aguarde o redirecionamento para a Pagina Oficial da Amend!";
+        mensagem.style.display = "block";
+
+        setTimeout(() => {
+          window.location.href = "https://www.amend.com.br/kit-amend-millenar-oleos-gregos-%7C-4-produtos/p/kit-665.html";
+        }, 2000);
       });
     }
   </script>
 
 </body>
 </html>
+
 
