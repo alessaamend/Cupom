@@ -3,51 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <title>Seu Cupom de Desconto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      background-image: url("background.jpg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      font-family: sans-serif;
       margin: 0;
-      height: 100vh;
+      font-family: sans-serif;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      background-image: url("mascara-nutricao-hidratação-reparacao-amend-essenciais.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: scroll; /* melhor para mobile */
     }
 
     .caixa-cupom {
       background-image: url("imagemcupom.jpg");
       background-size: cover;
       background-position: center;
-      width: 600px;
-      height: 650px;
+      width: 90%;
+      max-width: 600px;
+      aspect-ratio: 6 / 6.5; /* mantém proporção mesmo em telas menores */
       position: relative;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     .cupom {
-      display: none; /* Oculta visualmente */
+      display: none;
     }
 
     button {
       position: absolute;
-      bottom: 75px;
+      bottom: 10%;
       left: 50%;
       transform: translateX(-50%);
       padding: 10px 20px;
-      font-size: 35px;
-      cursor: pointer;
+      font-size: 5vw;
+      max-font-size: 35px;
       border: none;
       border-radius: 6px;
       background-color: #f7941d;
       color: white;
+      cursor: pointer;
     }
 
     button:hover {
       background-color: #e07c00;
+    }
+
+    @media (min-width: 768px) {
+      button {
+        font-size: 35px;
+      }
     }
   </style>
 </head>
@@ -69,4 +79,5 @@
 
 </body>
 </html>
+
 
