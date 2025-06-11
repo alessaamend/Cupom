@@ -2,33 +2,96 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecionando com Cupom</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const cupom = "IDB_ALESSAMARQUES"; // substitua pelo seu cupom real
-      const linkAfiliado = "https://www.amend.com.br/promocoes.html"; // substitua pelo seu link de afiliado
+  <title>Seu Cupom de Desconto</title>
+  <style>
+    body {
+      background-image: url("amendmilenarlancamento.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      font-family: sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-      // Função para copiar cupom
-      function copiarCupom(codigo) {
-        const tempInput = document.createElement("textarea");
-        tempInput.value = codigo;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand("copy");
-        document.body.removeChild(tempInput);
-      }
+    .caixa-cupom {
+      background-image: url("imagemcupom.jpg");
+      background-size: cover;
+      background-position: center;
+      width: 500px;
+      height: 600px;
+      position: relative;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
 
-      copiarCupom(cupom);
+    .cupom {
+      display: none;
+    }
 
-      // Aguarda 1 segundo e redireciona
-      setTimeout(function () {
-        window.location.href = linkAfiliado;
-      }, 1000);
-    });
-  </script>
+    button {
+      position: absolute;
+      bottom: 75px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 30px;
+      font-size: 28px;
+      white-space: nowrap;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      background-color: #f7941d;
+      color: white;
+    }
+
+    button:hover {
+      background-color: #e07c00;
+    }
+
+    .mensagem {
+      position: absolute;
+      bottom: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: none;
+      max-width: 90%;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <p>Redirecionando você para o site oficial com seu cupom de desconto copiado!</p>
+
+  <div class="caixa-cupom">
+    <div class="cupom" id="cupom">IDB_ALESSAMARQUES</div>
+    <div class="mensagem" id="mensagem"></div> <!-- Corrigido: mensagem agora está presente -->
+    <button onclick="copiarERedirecionar()">Copiar Cupom e Ir para a Loja</button>
+  </div>
+
+  <script>
+    function copiarERedirecionar() {
+      const cupom = document.getElementById("cupom").innerText;
+      const mensagem = document.getElementById("mensagem");
+
+      navigator.clipboard.writeText(cupom).then(() => {
+        mensagem.innerText = "Cupom Copiado! Aguarde o redirecionamento para a Pagina Oficial da Amend!";
+        mensagem.style.display = "block";
+
+        setTimeout(() => {
+          window.location.href = "https://www.amend.com.br";
+        }, 2000);
+      });
+    }
+  </script>
+
 </body>
 </html>
+
+
